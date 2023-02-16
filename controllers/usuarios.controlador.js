@@ -59,12 +59,12 @@ const usuariosPut = async (req = request, res=response) => {
 const usuariosDelete = async(req = request, res=response) => {
     
     const {id} = req.params;
-    //Para no perder el integridad referencial u acciones del usuario
-    const usuario = await Usuario.findByIdAndUpdate(id,{estado:false})
 
-    res.json({
-        usuario
-        });
+    //Para no perder el integridad referencial u acciones del usuario
+    const usuario = await Usuario.findByIdAndUpdate(id,{estado:false});
+
+
+    res.json(usuario);
 };
 
 const usuariosPatch  = (req = request, res=response) => {
