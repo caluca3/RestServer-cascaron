@@ -1,3 +1,3 @@
-# Web serrver
+# WebServer + RestServer
 
-Recordar ejecutar```nmp install``` para los modulos de node
+Recuerden que deben de ejecutar ```npm install``` para reconstruir los módulos de Node.

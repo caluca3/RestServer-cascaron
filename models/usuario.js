@@ -1,41 +1,45 @@
-const {Schema,model,} = require('mongoose');
 
-const UsuarioSchema = new Schema({
-    nombre:{
-        type:String,
-        required:[true, 'El nombre es obligatorio']
+const { Schema, model } = require('mongoose');
+
+const UsuarioSchema = Schema({
+    nombre: {
+        type: String,
+        required: [true, 'El nombre es obligatorio']
     },
-    correo:{
-        type:String,
-        required:[true, 'El correo es obligatorio'],
-        unique:true
-    },    
-    password:{
-        type:String,
-        required:[true, 'El password es obligatorio']
+    correo: {
+        type: String,
+        required: [true, 'El correo es obligatorio'],
+        unique: true
     },
-    img:{
-        type:String
+    password: {
+        type: String,
+        required: [true, 'La contraseña es obligatoria'],
     },
-    rol:{
-        type:String,
-        required:true,
-        enum:["ADMIN_ROLE","USER_ROLE"]
+    img: {
+        type: String,
     },
-    estado:{
-        type:Boolean,
-        default:true
+    rol: {
+        type: String,
+        required: true,
+        default: 'USER_ROLE',
+        emun: ['ADMIN_ROLE', 'USER_ROLE']
     },
-    google:{
-        type:Boolean,
-        default:false
+    estado: {
+        type: Boolean,
+        default: true
+    },
+    google: {
+        type: Boolean,
+        default: false
     },
 });
-//Para renombrar methods siempre function normal
-UsuarioSchema.methods.toJSON = function () {
-    const {password,__v,_id,...usuario} =  this.toObject();
-    usuario.uid =  _id;
+
+
+
+UsuarioSchema.methods.toJSON = function() {
+    const { __v, password, _id, ...usuario  } = this.toObject();
+    usuario.uid = _id;
     return usuario;
 }
 
-module.exports= model('Usuario',UsuarioSchema);
+module.exports = model( 'Usuario', UsuarioSchema );
