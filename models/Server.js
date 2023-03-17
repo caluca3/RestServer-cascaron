@@ -49,7 +49,8 @@ class Server {
         //Carga de archivos
         this.app.use(fileUpload({
             useTempFiles : true,
-            tempFileDir : '/tmp/'
+            tempFileDir : '/tmp/',
+            createParentPath:true
         }));
     }
 
@@ -68,10 +69,6 @@ class Server {
             console.log('Servidor corriendo en puerto', this.port );
         });
     }
-
 }
-
-
-
 
 module.exports = Server;
